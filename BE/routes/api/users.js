@@ -6,7 +6,7 @@ const keys = require("../../config/keys");
 const passport = require("passport");
 
 // Load input validation
-const validateRegisterInput = require("../../validation/register");
+const utility = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
 // Load User model
@@ -17,8 +17,11 @@ const User = require("../../models/User");
 // @access Public
 router.post("/register", (req, res) => {
   // Form validation
+register(req,res);
+  });
 
-  const { errors, isValid } = validateRegisterInput(req.body);
+ function register (req,res){
+  const { errors, isValid } = utility.validateRegisterInput(req.body);
 
   // Check validation
   if (!isValid) {
@@ -32,7 +35,9 @@ router.post("/register", (req, res) => {
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        isAdmin : req.body.isAdmin,
+        domain : req.body.domain
       });
 
       // Hash password before saving in database
@@ -48,8 +53,8 @@ router.post("/register", (req, res) => {
       });
     }
   });
-});
 
+}
 // @route POST api/users/login
 // @desc Login user and return JWT token
 // @access Public
@@ -106,4 +111,4 @@ router.post("/login", (req, res) => {
   });
 });
 
-module.exports = router;
+ module.exports = router;

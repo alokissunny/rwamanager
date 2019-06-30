@@ -1,4 +1,5 @@
 FE/node_modules
+FE/build
 BE/node_modules
 FE/package-lock.json
 BE/package-lock.json

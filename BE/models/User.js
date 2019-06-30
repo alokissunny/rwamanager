@@ -15,6 +15,14 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  isAdmin :{
+    type: Boolean,
+    default: false
+  },
+  domain : {
+    type: String,
+    default: ''
+  },
   date: {
     type: Date,
     default: Date.now

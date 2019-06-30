@@ -3,18 +3,19 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const SubDomainSchema = new Schema({
+  rwa: {
+    type: String,
+    required: true
+  },
   name: {
     type: String,
     required: true
   },
-  ownerName: {
+  email: {
     type: String,
     required: true
   },
-  ownerEmail: {
-    type: String,
-    required: true
-  },
+
   creationDate: {
     type: Date,
     default: Date.now
